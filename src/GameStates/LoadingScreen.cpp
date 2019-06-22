@@ -4,7 +4,6 @@
 
 void LoadingScreen::load()
 {
-
 }
 
 void LoadingScreen::update()

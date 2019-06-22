@@ -7,16 +7,16 @@
 class Game
 {
 public:
-    Game();
-    ~Game();
-    void start();
+	Game();
+	~Game();
+	void start();
 
 private:
-    sf::RenderWindow window;
-    GameState *currentGameState;
-    void mainLoop();
-    void update();
-    void draw(sf::RenderWindow *window);
+	sf::RenderWindow window;
+	GameState *currentGameState;
+	void mainLoop();
+	void update();
+	void draw(sf::RenderWindow *window);
 };
 
 #endif
