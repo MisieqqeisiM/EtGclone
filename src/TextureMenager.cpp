@@ -1,6 +1,6 @@
 #include "TextureMenager.h"
 
-
+#include <iostream>
 
 TextureMenager::TextureMenager(std::vector<std::string> pathsVector)
 {
