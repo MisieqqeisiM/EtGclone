@@ -11,9 +11,9 @@ TextureMenager::TextureMenager(std::vector<std::string> pathsVector)
 	}
 }
 
-sf::Image TextureMenager::LoadTexture(const std::string& path)
+sf::Texture TextureMenager::LoadTexture(const std::string& path)
 {
-	sf::Image image;
+	sf::Texture image;
 	if (!image.loadFromFile(path)) 
 	{
 		std::cerr << "Couldn't open file: " << path << std::endl;
@@ -24,7 +24,7 @@ sf::Image TextureMenager::LoadTexture(const std::string& path)
 	}
 }
 
-sf::Image* TextureMenager::GetTexturePtr(int id) 
+sf::Texture* TextureMenager::GetTexturePtr(int id) 
 {
 	return &(this->textureImages[id]);
 }

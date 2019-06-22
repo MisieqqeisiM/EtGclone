@@ -10,12 +10,12 @@ class TextureMenager
 {
 private:
 	std::vector<std::string> paths;
-	std::vector<sf::Image> textureImages;
+	std::vector<sf::Texture> textureImages;
 public:
 	TextureMenager(std::vector<std::string> pathsVector);
-	sf::Image* GetTexturePtr(int id);
+	sf::Texture* GetTexturePtr(int id);
 private:
-	sf::Image LoadTexture(const std::string& path);
+	sf::Texture LoadTexture(const std::string& path);
 };
 
 #endif
