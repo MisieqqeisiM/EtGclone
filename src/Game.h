@@ -3,20 +3,22 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameStates/GameState.h"
+#include "TextureMenager.h"
 
 class Game
 {
 public:
-	Game();
-	~Game();
-	void start();
+    Game();
+    ~Game();
+    void start();
 
+	TextureMenager *textureMenager;
 private:
-	sf::RenderWindow window;
-	GameState *currentGameState;
-	void mainLoop();
-	void update();
-	void draw(sf::RenderWindow *window);
+    sf::RenderWindow window;
+    GameState *currentGameState;
+    void mainLoop();
+    void update();
+    void draw(sf::RenderWindow *window);
 };
 
 #endif
