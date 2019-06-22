@@ -24,7 +24,7 @@ void Game::mainLoop()
     while (this->window.isOpen())
     {
         this->update();
-        this->draw();
+        this->draw(&window);
     }
 }
 
@@ -51,7 +51,8 @@ void Game::update()
     }
 }
 
-void Game::draw()
+void Game::draw(sf::RenderWindow *window)
 {
     this->currentGameState->draw();
+	window->display();
 }

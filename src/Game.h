@@ -16,7 +16,7 @@ private:
     GameState *currentGameState;
     void mainLoop();
     void update();
-    void draw();
+    void draw(sf::RenderWindow *window);
 };
 
 #endif
