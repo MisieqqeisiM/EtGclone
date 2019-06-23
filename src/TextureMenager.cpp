@@ -10,10 +10,10 @@ TextureMenager::TextureMenager()
 	}
 }
 
-sf::Texture TextureMenager::loadTexture(const std::string &path)
+sf::Texture *TextureMenager::loadTexture(const std::string &path)
 {
-	sf::Texture image;
-	if (!image.loadFromFile(path))
+	sf::Texture *image = new sf::Texture();
+	if (!image->loadFromFile(path))
 	{
 		std::cerr << "Couldn't open file: " << path << std::endl;
 	}
@@ -22,7 +22,7 @@ sf::Texture TextureMenager::loadTexture(const std::string &path)
 
 sf::Texture const &TextureMenager::getTexture(int id) const
 {
-	return this->textureImages[id];
+	return *(this->textureImages[id]);
 }
 
 sf::IntRect TextureMenager::getRegion(Atlas atlasType, int objectType, int frameX, int frameY) const

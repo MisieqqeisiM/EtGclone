@@ -1,6 +1,6 @@
 #include "Room.h"
 #include <cmath>
-Room::Room(int x, int y, int width, int height) : tiles(width * height, Tile{NONE})
+Room::Room(int x, int y, int width, int height) : tiles(width * height, Tile{WALL})
 {
 	this->x = x;
 	this->y = y;

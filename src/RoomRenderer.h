@@ -16,6 +16,7 @@ public:
 private:
 	const Room &room;
 	std::vector<sf::Sprite> tiles;
+	sf::Texture *texture;
 };
 
 #endif
