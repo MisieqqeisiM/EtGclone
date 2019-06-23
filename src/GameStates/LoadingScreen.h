@@ -6,9 +6,9 @@
 class LoadingScreen : public GameState
 {
 public:
-    void update() override;
-    void draw() override;
-    void load() override;
+	void update() override;
+	void draw(sf::RenderTarget &renderTarget) override;
+	void load() override;
 };
 
 #endif
