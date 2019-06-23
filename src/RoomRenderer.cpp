@@ -1,5 +1,4 @@
 #include "RoomRenderer.h"
-#include <iostream>
 WallType getWallType(const Room &room, int x, int y)
 {
 	bool a = room.getTile(x - 1, y - 1).type == FLOOR;
