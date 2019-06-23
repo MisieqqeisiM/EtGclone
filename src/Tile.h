@@ -3,9 +3,9 @@
 
 enum TileType
 {
-	NONE,
 	FLOOR,
-	WALL
+	WALL,
+	NONE
 };
 
 struct Tile
