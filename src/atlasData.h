@@ -34,7 +34,7 @@ enum Atlas
 	ENTITIES,
 	TILES
 };
-enum Entity
+enum EntityType
 {
 	PLAYER,
 	ENEMY_1
