@@ -35,3 +35,16 @@ void Entity::movePos(sf::Vector2f change)
 {
 	this->position += change;
 }
+
+void Entity::update() 
+{
+
+}
+void Entity::load() 
+{
+	
+}
+void Entity::draw()
+{
+
+}

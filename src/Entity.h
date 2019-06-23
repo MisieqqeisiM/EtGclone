@@ -5,7 +5,7 @@
 class Entity
 {
 public :
-	enum direction { NORTH, NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST, EAST, WEST };
+	enum direction { NONE, NORTH, NORTH_EAST, NORTH_WEST, SOUTH, SOUTH_EAST, SOUTH_WEST, EAST, WEST };
 protected:
 	sf::Texture *currentTexture;
 	sf::Vector2f position;
@@ -27,5 +27,6 @@ public:
 
 	virtual void update();
 	virtual void load();
+	virtual void draw();
 };
 

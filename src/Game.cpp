@@ -1,6 +1,9 @@
 #include "Game.h"
 #include "GameStates/LoadingScreen.h"
 
+#include <iostream>
+
+
 Game::Game() : window(sf::VideoMode::getDesktopMode(), "Gra", sf::Style::Fullscreen)
 {
     this->start();
@@ -17,10 +20,6 @@ void Game::start()
 {
 	this->currentGameState = new LoadingScreen();
 	this->currentGameState->load();
-
-	std::vector<std::string> p;
-	p.push_back("res/yeet.png");
-	this->textureMenager = new TextureMenager(p);
 }
 
 void Game::mainLoop()
@@ -31,7 +30,6 @@ void Game::mainLoop()
         this->draw(&window);
     }
 }
-
 void Game::update()
 {
     //check for closing events
