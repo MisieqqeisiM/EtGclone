@@ -39,7 +39,7 @@ void Game::update()
 		this->window.close();
 
 	//update current game state
-	this->currentGameState->update();
+	this->currentGameState->update(&window);
 
 	//move to next game state if necessary
 	if (this->currentGameState->hasFinished())
@@ -53,6 +53,8 @@ void Game::update()
 
 void Game::draw()
 {
+	this->window.clear();
 	this->currentGameState->draw(this->window);
 	this->window.display();
+
 }
