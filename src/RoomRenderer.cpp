@@ -1,5 +1,5 @@
 #include "RoomRenderer.h"
-
+#include <iostream>
 WallType getWallType(const Room &room, int x, int y)
 {
 	bool a = room.getTile(x - 1, y - 1).type == FLOOR;
@@ -39,8 +39,7 @@ RoomRenderer::RoomRenderer(const Room &room, const TextureMenager &textureMenage
 			if (tile.type == NONE)
 				continue;
 
-			sf::Sprite sprite;
-			sprite.setTexture(textureMenager.getTexture(TILES));
+			sf::Sprite sprite(textureMenager.getTexture(TILES));
 			switch (tile.type)
 			{
 			case FLOOR:
@@ -51,14 +50,14 @@ RoomRenderer::RoomRenderer(const Room &room, const TextureMenager &textureMenage
 				sprite.setTextureRect(textureMenager.getRegion(TILES, WALL, wall_type));
 				break;
 			}
-			sprite.setPosition(x * 32, y * 32);
+			sprite.setPosition((x + room.getX()) * 32, (y + room.getY()) * 32);
 			tiles.push_back(std::move(sprite));
 		}
 	}
 }
 void RoomRenderer::draw(sf::RenderTarget &renderTarget)
 {
-	for (sf::Sprite sprite : this->tiles)
+	for (sf::Sprite &sprite : this->tiles)
 	{
 		renderTarget.draw(sprite);
 	}

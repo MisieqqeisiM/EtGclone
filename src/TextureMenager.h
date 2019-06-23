@@ -14,9 +14,9 @@ public:
 	sf::IntRect getRegion(Atlas atlasType, int objectType, int frameX, int frameY = -1) const;
 
 private:
-	sf::Texture loadTexture(const std::string &path);
+	sf::Texture *loadTexture(const std::string &path);
 	std::vector<std::string> paths;
-	std::vector<sf::Texture> textureImages;
+	std::vector<sf::Texture *> textureImages;
 };
 
 #endif
