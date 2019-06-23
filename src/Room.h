@@ -13,12 +13,17 @@ public:
 	Tile getTile(int x, int y) const;
 	void setTile(int x, int y, Tile tile);
 	bool isAir(sf::Vector2f position) const;
+	int getWidth() const;
+	int getHeight() const;
+	int getX() const;
+	int getY() const;
 
 private:
 	int x, y;
 	int width,
 		height;
 	std::vector<Tile> tiles;
+	friend class RoomRenderer;
 };
 
 #endif

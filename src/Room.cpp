@@ -6,6 +6,11 @@ Room::Room(int x, int y, int width, int height) : tiles(width * height, Tile{NON
 	this->y = y;
 	this->width = width;
 	this->height = height;
+
+	//temporary generation
+	for (int x = 1; x < width - 1; x++)
+		for (int y = 1; y < height - 1; y++)
+			tiles[x * height + y] = Tile{FLOOR};
 }
 
 Tile Room::getTile(int x, int y) const
@@ -25,6 +30,26 @@ void Room::setTile(int x, int y, Tile tile)
 bool Room::isAir(sf::Vector2f position) const
 {
 	return this->getTile(std::floor(position.x - this->x), std::floor(position.y - this->y)).isAir();
+}
+
+int Room::getWidth() const
+{
+	return this->width;
+}
+
+int Room::getHeight() const
+{
+	return this->height;
+}
+
+int Room::getX() const
+{
+	return this->x;
+}
+
+int Room::getY() const
+{
+	return this->y;
 }
 
 Room::~Room()
