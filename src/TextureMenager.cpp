@@ -2,29 +2,37 @@
 
 #include <iostream>
 
-TextureMenager::TextureMenager(std::vector<std::string> pathsVector)
+TextureMenager::TextureMenager()
 {
-	this->paths = pathsVector;
-	for (std::string path : paths)
+	for (AtlasData data : atlasData)
 	{
-		this->textureImages.push_back(LoadTexture(path));
+		this->textureImages.push_back(loadTexture("res/" + data.fileName));
 	}
 }
 
-sf::Texture TextureMenager::LoadTexture(const std::string &path)
+sf::Texture TextureMenager::loadTexture(const std::string &path)
 {
 	sf::Texture image;
 	if (!image.loadFromFile(path))
 	{
 		std::cerr << "Couldn't open file: " << path << std::endl;
 	}
-	else
-	{
-		return image;
-	}
+	return image;
 }
 
-sf::Texture *TextureMenager::GetTexturePtr(int id)
+sf::Texture const &TextureMenager::getTexture(int id) const
 {
-	return &(this->textureImages[id]);
+	return this->textureImages[id];
+}
+
+sf::IntRect TextureMenager::getRegion(Atlas atlasType, int objectType, int frameX, int frameY) const
+{
+	TexData tex = atlasData[atlasType].regions[objectType];
+	if (frameY == -1)
+	{
+		int frame = frameX;
+		frameX = frame % tex.framesX;
+		frameY = frame / tex.framesX;
+	}
+	return {tex.rect.left + frameX * tex.rect.width, tex.rect.top + frameY * tex.rect.height, tex.rect.width, tex.rect.height};
 }

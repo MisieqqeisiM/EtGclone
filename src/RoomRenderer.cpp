@@ -1,5 +1,4 @@
 #include "RoomRenderer.h"
-#include "atlasData.h"
 
 WallType getWallType(const Room &room, int x, int y)
 {
@@ -29,7 +28,7 @@ WallType getWallType(const Room &room, int x, int y)
 		return RIGTH_TURN;
 	return FRONT;
 }
-RoomRenderer::RoomRenderer(const Room &room) : room(room)
+RoomRenderer::RoomRenderer(const Room &room, const TextureMenager &textureMenager) : room(room)
 {
 	tiles.reserve(room.getWidth() * (room.getHeight() + 1));
 	for (int y = 0; y < room.getHeight(); y++)
@@ -41,14 +40,15 @@ RoomRenderer::RoomRenderer(const Room &room) : room(room)
 				continue;
 
 			sf::Sprite sprite;
+			sprite.setTexture(textureMenager.getTexture(TILES));
 			switch (tile.type)
 			{
 			case FLOOR:
-				sprite.setTextureRect(getRegion(TILES, FLOOR, 0));
+				sprite.setTextureRect(textureMenager.getRegion(TILES, FLOOR, 0));
 				break;
 			case WALL:
 				WallType wall_type = getWallType(room, x, y);
-				sprite.setTextureRect(getRegion(TILES, WALL, wall_type));
+				sprite.setTextureRect(textureMenager.getRegion(TILES, WALL, wall_type));
 				break;
 			}
 			sprite.setPosition(x * 32, y * 32);

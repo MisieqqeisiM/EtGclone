@@ -2,6 +2,7 @@
 #define ROOM_RENDERER_H
 
 #include "Room.h"
+#include "TextureMenager.h"
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <vector>
@@ -9,7 +10,7 @@
 class RoomRenderer
 {
 public:
-	RoomRenderer(Room const &room);
+	RoomRenderer(const Room &room, const TextureMenager &textureMenager);
 	void draw(sf::RenderTarget &renderTarget);
 
 private:

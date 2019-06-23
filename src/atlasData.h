@@ -40,7 +40,7 @@ enum Entity
 	ENEMY_1
 };
 
-std::vector<AtlasData> atlasData = {
+const std::vector<AtlasData> atlasData = {
 	{"entities.png",
 	 {
 		 {{0, 0, 32, 32}, 8, 1}, //Player
@@ -52,15 +52,4 @@ std::vector<AtlasData> atlasData = {
 		 {{32, 0, 32, 32}, 8, 1} //Wall
 	 }}};
 
-sf::IntRect getRegion(Atlas atlasType, int objectType, int frameX, int frameY = -1)
-{
-	TexData tex = atlasData[atlasType].regions[objectType];
-	if (frameY == -1)
-	{
-		int frame = frameX;
-		frameX = frame % tex.framesX;
-		frameY = frame / tex.framesX;
-	}
-	return {tex.rect.left + frameX * tex.rect.width, tex.rect.top + frameY * tex.rect.height, tex.rect.width, tex.rect.height};
-}
 #endif

@@ -5,8 +5,8 @@
 
 void LoadingScreen::load()
 {
-	this->finished = true;			//temporary
-	this->nextState = new Level(0); //temporary
+	this->finished = true;							  //temporary
+	this->nextState = new Level(0, TextureMenager()); //temporary
 }
 
 void LoadingScreen::update()

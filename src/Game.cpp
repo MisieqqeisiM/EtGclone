@@ -17,10 +17,6 @@ void Game::start()
 {
 	this->currentGameState = new LoadingScreen();
 	this->currentGameState->load();
-
-	std::vector<std::string> p;
-	p.push_back("res/yeet.png");
-	this->textureMenager = new TextureMenager(p);
 }
 
 void Game::mainLoop()
