@@ -22,7 +22,7 @@ void Game::start()
 	this->currentGameState->load();
 }
 
-void Game::stop() 
+void Game::stop()
 {
 	this->window.close();
 	this->running = false;
@@ -32,14 +32,14 @@ void Game::mainLoop()
 {
 	sf::Clock clock;
 	sf::Time lastTime = clock.restart();
-	double microsPerUpdate = 1000000.0/ UPS;
+	double microsPerUpdate = 1000000.0 / UPS;
 	double delta = 0.0;
 	while (this->running)
 	{
 		sf::Time now = clock.getElapsedTime();
 		delta += (now.asMicroseconds() - lastTime.asMicroseconds()) / microsPerUpdate;
 		lastTime = now;
-		while (delta >= 1.0) 
+		while (delta >= 1.0)
 		{
 			this->update(now);
 			this->draw();
@@ -48,7 +48,7 @@ void Game::mainLoop()
 	}
 }
 
-void Game::update(const sf::Time& time)
+void Game::update(const sf::Time &time)
 {
 	//check for closing events
 	sf::Event event;
@@ -82,5 +82,4 @@ void Game::draw()
 	this->window.clear();
 	this->currentGameState->draw(this->window);
 	this->window.display();
-
 }

@@ -14,7 +14,7 @@ public:
 	Level(int id, const TextureMenager *textureMenager);
 	~Level();
 	void load() override;
-	void update(sf::RenderWindow *window, const sf::Time& time) override;
+	void update(sf::RenderWindow *window, const sf::Time &time) override;
 	void draw(sf::RenderTarget &renderTarget) override;
 
 private:

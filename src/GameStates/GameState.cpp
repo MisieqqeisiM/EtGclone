@@ -2,10 +2,10 @@
 
 bool GameState::hasFinished()
 {
-    return this->finished;
+	return this->finished;
 }
 
 GameState *GameState::getNextState()
 {
-    return this->nextState;
+	return this->nextState;
 }

@@ -7,13 +7,25 @@
 class Entity
 {
 public:
-	enum direction { NORTH, NORTH_EAST, EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, WEST, NORTH_WEST };
+	enum direction
+	{
+		NORTH,
+		NORTH_EAST,
+		EAST,
+		SOUTH_EAST,
+		SOUTH,
+		SOUTH_WEST,
+		WEST,
+		NORTH_WEST
+	};
+
 protected:
 	sf::Vector2f position;
 	float speed;
 	direction dir;
 
 	sf::Sprite sprite;
+
 public:
 	~Entity();
 	sf::Vector2f getPosition() const;
@@ -27,6 +39,5 @@ public:
 
 	virtual void update();
 	virtual void load();
-	virtual void draw(sf::RenderTarget *window, const TextureMenager& texMenager, sf::Time time);
+	virtual void draw(sf::RenderTarget *window, const TextureMenager &texMenager, sf::Time time);
 };
-

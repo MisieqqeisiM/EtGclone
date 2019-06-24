@@ -11,7 +11,7 @@ Level::~Level()
 {
 	delete this->textureMenager; //temporary
 }
-void Level::update(sf::RenderWindow *window, const sf::Time& time)
+void Level::update(sf::RenderWindow *window, const sf::Time &time)
 {
 	this->time = time;
 	this->player.update(window);

@@ -1,9 +1,7 @@
 #include "Entity.h"
 
-
 Entity::~Entity()
 {
-
 }
 
 sf::Vector2f Entity::getPosition() const
@@ -36,13 +34,10 @@ void Entity::movePos(sf::Vector2f change)
 
 void Entity::update()
 {
-
 }
 void Entity::load()
 {
-
 }
-void Entity::draw(sf::RenderTarget *window, const TextureMenager& texMenager, sf::Time time)
+void Entity::draw(sf::RenderTarget *window, const TextureMenager &texMenager, sf::Time time)
 {
-
 }
