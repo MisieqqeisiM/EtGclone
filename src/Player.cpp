@@ -18,7 +18,7 @@ Player::Player()
 	{
 		std::cout << "Couldn't load file" << std::endl;
 	}
-	this->speed = 1.0f;
+	this->speed = 1.0f / 500;
 }
 
 void Player::update(sf::RenderWindow *window)
@@ -87,7 +87,7 @@ void Player::load()
 void Player::draw(sf::RenderTarget *window, const TextureMenager &texMenager)
 {
 	this->sprite.setTexture(texMenager.getTexture(ENTITIES));
-	this->sprite.setPosition(this->position);
+	this->sprite.setPosition(this->position.x * 32, this->position.y * 32);
 	this->sprite.setTextureRect(texMenager.getRegion(Atlas::ENTITIES, EntityType::PLAYER, 0, 0));
 	window->draw(this->sprite);
 }

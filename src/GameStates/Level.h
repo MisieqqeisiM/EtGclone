@@ -12,6 +12,7 @@ class Level : public GameState
 {
 public:
 	Level(int id, const TextureMenager *textureMenager);
+	~Level();
 	void load() override;
 	void update(sf::RenderWindow *window) override;
 	void draw(sf::RenderTarget &renderTarget) override;
