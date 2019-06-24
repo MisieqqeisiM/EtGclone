@@ -49,15 +49,21 @@ void Game::mainLoop()
 	}
 }
 
-void Game::update(sf::Time time)
+void Game::update(const sf::Time& time)
 {
 	//check for closing events
 	sf::Event event;
 	while (this->window.pollEvent(event))
+	{
 		if (event.type == sf::Event::Closed)
+		{
 			this->window.close();
+		}
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	{
 		this->stop();
+	}
 
 	//update current game state
 	this->currentGameState->update(&window, time);

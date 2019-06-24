@@ -8,7 +8,7 @@ Level::Level(int id, const TextureMenager *textureMenager) : textureMenager(text
 	this->roomRenderers.push_back(RoomRenderer(this->rooms[0], *textureMenager));
 }
 
-void Level::update(sf::RenderWindow *window, sf::Time time)
+void Level::update(sf::RenderWindow *window, const sf::Time& time)
 {
 	this->time = time;
 	this->player.update(window);

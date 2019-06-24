@@ -6,7 +6,7 @@
 class GameState
 {
 public:
-	virtual void update(sf::RenderWindow *window, sf::Time time) = 0;							   //execute every frame
+	virtual void update(sf::RenderWindow *window, const sf::Time& time) = 0;							   //execute every frame
 	virtual void draw(sf::RenderTarget &renderTarget) = 0; //draw every frame
 	virtual void load() = 0;							   //load on initialization
 	GameState *getNextState();

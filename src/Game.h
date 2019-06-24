@@ -23,7 +23,7 @@ private:
 	sf::RenderWindow window;
 	GameState *currentGameState;
 	void mainLoop();
-	void update(sf::Time time);
+	void update(const sf::Time& time);
 	void draw();
 };
 
