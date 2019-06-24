@@ -42,7 +42,7 @@ void Entity::load()
 {
 
 }
-void Entity::draw()
+void Entity::draw(sf::RenderTarget *window, const TextureMenager& texMenager)
 {
 
 }

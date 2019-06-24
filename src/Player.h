@@ -16,7 +16,7 @@ public:
 
 	void update(sf::RenderWindow *window);
 	void load() override;
-	void draw(sf::RenderTarget *window, const TextureMenager& texMenager);
+	void draw(sf::RenderTarget *window, const TextureMenager& texMenager) override;
 };
 
 #endif

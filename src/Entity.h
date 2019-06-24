@@ -28,6 +28,6 @@ public:
 
 	virtual void update();
 	virtual void load();
-	virtual void draw();
+	virtual void draw(sf::RenderTarget *window, const TextureMenager& texMenager);
 };
 
