@@ -5,16 +5,14 @@
 
 void LoadingScreen::load()
 {
-	this->finished = true;							  //temporary
-	this->nextState = new Level(0, TextureMenager()); //temporary
+	this->finished = true;								  //temporary
+	this->nextState = new Level(0, new TextureMenager()); //temporary
 }
 
 void LoadingScreen::update(sf::RenderWindow *window)
 {
-
 }
 
 void LoadingScreen::draw(sf::RenderTarget &renderTarget)
 {
-
 }

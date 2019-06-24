@@ -11,7 +11,7 @@
 class Level : public GameState
 {
 public:
-	Level(int id, const TextureMenager &textureMenager);
+	Level(int id, const TextureMenager *textureMenager);
 	void load() override;
 	void update(sf::RenderWindow *window) override;
 	void draw(sf::RenderTarget &renderTarget) override;
@@ -21,7 +21,7 @@ private:
 	std::vector<Room> rooms;
 	std::vector<RoomRenderer> roomRenderers;
 	Player player;
-	const TextureMenager &textureMenager;
+	const TextureMenager *textureMenager;
 };
 
 #endif

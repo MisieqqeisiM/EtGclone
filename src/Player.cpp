@@ -86,8 +86,7 @@ void Player::load()
 
 void Player::draw(sf::RenderTarget *window, const TextureMenager &texMenager)
 {
-
-	this->sprite.setTexture(this->texture);
+	this->sprite.setTexture(texMenager.getTexture(ENTITIES));
 	this->sprite.setPosition(this->position);
 	this->sprite.setTextureRect(texMenager.getRegion(Atlas::ENTITIES, EntityType::PLAYER, 0, 0));
 	window->draw(this->sprite);
