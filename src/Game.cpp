@@ -5,6 +5,7 @@
 
 Game::Game() : window(sf::VideoMode::getDesktopMode(), "Gra", sf::Style::Fullscreen)
 {
+	this->window.setVerticalSyncEnabled(true);
 	this->start();
 	this->mainLoop();
 }
