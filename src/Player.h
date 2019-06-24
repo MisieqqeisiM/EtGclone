@@ -13,7 +13,7 @@ public:
 
 	void update(sf::RenderWindow *window);
 	void load() override;
-	void draw(sf::RenderTarget *window, const TextureMenager &texMenager) override;
+	void draw(sf::RenderTarget *window, const TextureMenager& texMenager, sf::Time time) override;
 };
 
 #endif

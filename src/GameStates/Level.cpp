@@ -11,8 +11,9 @@ Level::~Level()
 {
 	delete this->textureMenager; //temporary
 }
-void Level::update(sf::RenderWindow *window)
+void Level::update(sf::RenderWindow *window, const sf::Time& time)
 {
+	this->time = time;
 	this->player.update(window);
 }
 void Level::draw(sf::RenderTarget &renderTarget)
@@ -23,6 +24,6 @@ void Level::draw(sf::RenderTarget &renderTarget)
 	renderTarget.setView(view);
 	for (RoomRenderer renderer : this->roomRenderers)
 		renderer.draw(renderTarget);
-	player.draw(&renderTarget, *(this->textureMenager));
+	player.draw(&renderTarget, *(this->textureMenager), this->time);
 }
 void Level::load() {}

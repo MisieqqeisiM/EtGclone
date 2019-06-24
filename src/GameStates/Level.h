@@ -14,11 +14,12 @@ public:
 	Level(int id, const TextureMenager *textureMenager);
 	~Level();
 	void load() override;
-	void update(sf::RenderWindow *window) override;
+	void update(sf::RenderWindow *window, const sf::Time& time) override;
 	void draw(sf::RenderTarget &renderTarget) override;
 
 private:
 	int id;
+	sf::Time time;
 	std::vector<Room> rooms;
 	std::vector<RoomRenderer> roomRenderers;
 	Player player;

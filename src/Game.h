@@ -11,14 +11,19 @@ public:
 	Game();
 	~Game();
 	void start();
+	void stop();
+
 
 	TextureMenager *textureMenager;
 
 private:
+	const unsigned int UPS = 80;
+	bool running;
+
 	sf::RenderWindow window;
 	GameState *currentGameState;
 	void mainLoop();
-	void update();
+	void update(const sf::Time& time);
 	void draw();
 };
 

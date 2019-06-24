@@ -14,11 +14,7 @@ Player::Player(sf::Vector2f position)
 Player::Player()
 {
 	this->position = sf::Vector2f(0.0f, 0.0f);
-	if (!this->texture.loadFromFile("res/entities.png"))
-	{
-		std::cout << "Couldn't load file" << std::endl;
-	}
-	this->speed = 1.0f / 500;
+	this->speed = 1.0f;
 }
 
 void Player::update(sf::RenderWindow *window)
@@ -84,10 +80,11 @@ void Player::load()
 {
 }
 
-void Player::draw(sf::RenderTarget *window, const TextureMenager &texMenager)
+void Player::draw(sf::RenderTarget *window, const TextureMenager &texMenager, sf::Time time)
 {
+	int frame = ((long)time.asSeconds()*2)%3;
 	this->sprite.setTexture(texMenager.getTexture(ENTITIES));
-	this->sprite.setPosition(this->position.x * 32, this->position.y * 32);
-	this->sprite.setTextureRect(texMenager.getRegion(Atlas::ENTITIES, EntityType::PLAYER, 0, 0));
+	this->sprite.setPosition(sf::Vector2f(window->getSize().x/2, window->getSize().y/2));
+	this->sprite.setTextureRect(texMenager.getRegion(Atlas::ENTITIES, EntityType::PLAYER, frame, this->dir));
 	window->draw(this->sprite);
 }
