@@ -10,6 +10,7 @@ class TextureMenager
 {
 public:
 	TextureMenager();
+	~TextureMenager();
 	sf::Texture const &getTexture(int id) const;
 	sf::IntRect getRegion(Atlas atlasType, int objectType, int frameX, int frameY = -1) const;
 

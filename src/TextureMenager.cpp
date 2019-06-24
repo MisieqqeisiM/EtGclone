@@ -9,7 +9,13 @@ TextureMenager::TextureMenager()
 		this->textureImages.push_back(loadTexture("res/" + data.fileName));
 	}
 }
-
+TextureMenager::~TextureMenager()
+{
+	for (sf::Texture *texture : this->textureImages)
+	{
+		delete texture;
+	}
+}
 sf::Texture *TextureMenager::loadTexture(const std::string &path)
 {
 	sf::Texture *image = new sf::Texture();
