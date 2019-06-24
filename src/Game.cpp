@@ -34,7 +34,6 @@ void Game::mainLoop()
 	sf::Time lastTime = clock.restart();
 	double microsPerUpdate = 1000000.0/ UPS;
 	double delta = 0.0;
-
 	while (this->running)
 	{
 		sf::Time now = clock.getElapsedTime();

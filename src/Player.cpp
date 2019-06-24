@@ -80,10 +80,9 @@ void Player::load()
 {
 }
 
-void Player::draw(sf::RenderTarget *window, const TextureMenager &texMenager, const sf::Time& time)
+void Player::draw(sf::RenderTarget *window, const TextureMenager &texMenager, sf::Time time)
 {
-	long sTime = time.asSeconds();
-	int frame = 2-((sTime*2) % 3);
+	int frame = ((long)time.asSeconds()*2)%3;
 	this->sprite.setTexture(texMenager.getTexture(ENTITIES));
 	this->sprite.setPosition(sf::Vector2f(window->getSize().x/2, window->getSize().y/2));
 	this->sprite.setTextureRect(texMenager.getRegion(Atlas::ENTITIES, EntityType::PLAYER, frame, this->dir));
