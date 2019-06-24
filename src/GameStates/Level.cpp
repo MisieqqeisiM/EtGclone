@@ -8,14 +8,15 @@ Level::Level(int id, const TextureMenager *textureMenager) : textureMenager(text
 	this->roomRenderers.push_back(RoomRenderer(this->rooms[0], *textureMenager));
 }
 
-void Level::update(sf::RenderWindow *window)
+void Level::update(sf::RenderWindow *window, sf::Time time)
 {
+	this->time = time;
 	this->player.update(window);
 }
 void Level::draw(sf::RenderTarget &renderTarget)
 {
 	for (RoomRenderer renderer : this->roomRenderers)
 		renderer.draw(renderTarget);
-	player.draw(&renderTarget, *(this->textureMenager));
+	player.draw(&renderTarget, *(this->textureMenager), this->time);
 }
 void Level::load() {}

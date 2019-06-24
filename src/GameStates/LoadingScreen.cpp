@@ -9,7 +9,7 @@ void LoadingScreen::load()
 	this->nextState = new Level(0, new TextureMenager()); //temporary
 }
 
-void LoadingScreen::update(sf::RenderWindow *window)
+void LoadingScreen::update(sf::RenderWindow *window, sf::Time time)
 {
 }
 

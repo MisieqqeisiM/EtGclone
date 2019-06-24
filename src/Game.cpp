@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "GameStates/LoadingScreen.h"
 
+#include <iostream>
+
 Game::Game() : window(sf::VideoMode::getDesktopMode(), "Gra", sf::Style::Fullscreen)
 {
 	this->start();
@@ -15,20 +17,39 @@ Game::~Game()
 
 void Game::start()
 {
+	this->running = true;
 	this->currentGameState = new LoadingScreen();
 	this->currentGameState->load();
 }
 
+void Game::stop() 
+{
+	this->window.close();
+	this->running = false;
+}
+
 void Game::mainLoop()
 {
-	while (this->window.isOpen())
+	sf::Clock clock;
+	sf::Time lastTime = clock.restart();
+	double microsPerUpdate = 1000000.0/ UPS;
+	double delta = 0.0;
+
+	while (this->running)
 	{
-		this->update();
-		this->draw();
+		sf::Time now = clock.getElapsedTime();
+		delta += (now.asMicroseconds() - lastTime.asMicroseconds()) / microsPerUpdate;
+		lastTime = now;
+		while (delta >= 1.0) 
+		{
+			this->update(now);
+			this->draw();
+			delta -= 1.0;
+		}
 	}
 }
 
-void Game::update()
+void Game::update(sf::Time time)
 {
 	//check for closing events
 	sf::Event event;
@@ -36,10 +57,10 @@ void Game::update()
 		if (event.type == sf::Event::Closed)
 			this->window.close();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
-		this->window.close();
+		this->stop();
 
 	//update current game state
-	this->currentGameState->update(&window);
+	this->currentGameState->update(&window, time);
 
 	//move to next game state if necessary
 	if (this->currentGameState->hasFinished())
