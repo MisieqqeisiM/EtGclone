@@ -7,6 +7,7 @@
 #include "RoomRenderer.h"
 #include "TextureMenager.h"
 #include "Player.h"
+#include "PlayerRenderer.h"
 
 class Level : public GameState
 {
@@ -23,6 +24,7 @@ private:
 	std::vector<Room> rooms;
 	std::vector<RoomRenderer> roomRenderers;
 	Player player;
+	PlayerRenderer *playerRenderer;
 	const TextureMenager *textureMenager;
 };
 

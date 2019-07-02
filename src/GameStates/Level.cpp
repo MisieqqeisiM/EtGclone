@@ -6,6 +6,7 @@ Level::Level(int id, const TextureMenager *textureMenager) : textureMenager(text
 	//temporary generation
 	this->rooms.push_back(Room(0, 0, 20, 20));
 	this->roomRenderers.push_back(RoomRenderer(this->rooms[0], *textureMenager));
+	this->playerRenderer = new PlayerRenderer(this->player);
 }
 Level::~Level()
 {
@@ -23,7 +24,9 @@ void Level::draw(sf::RenderTarget &renderTarget)
 
 	renderTarget.setView(view);
 	for (RoomRenderer renderer : this->roomRenderers)
+	{
 		renderer.draw(renderTarget);
-	player.draw(&renderTarget, *(this->textureMenager), this->time);
+	}
+	this->playerRenderer->draw(&renderTarget, *this->textureMenager, this->time);
 }
 void Level::load() {}

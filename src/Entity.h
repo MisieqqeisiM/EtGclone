@@ -39,5 +39,5 @@ public:
 
 	virtual void update();
 	virtual void load();
-	virtual void draw(sf::RenderTarget *window, const TextureMenager &texMenager, sf::Time time);
+	virtual void draw();
 };

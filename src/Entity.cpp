@@ -38,6 +38,6 @@ void Entity::update()
 void Entity::load()
 {
 }
-void Entity::draw(sf::RenderTarget *window, const TextureMenager &texMenager, sf::Time time)
+void Entity::draw()
 {
 }
