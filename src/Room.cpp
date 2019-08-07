@@ -1,45 +1,21 @@
 #include "Room.h"
 #include <cmath>
-Room::Room(int x, int y, int width, int height) : tiles(width * height, Tile{WALL})
+#include "levelData.h"
+Room::Room(int x, int y, int id)
 {
 	this->x = x;
 	this->y = y;
-	this->width = width;
-	this->height = height;
-
-	//temporary generation
-	for (int x = 1; x < width - 1; x++)
-		for (int y = 1; y < height - 1; y++)
-			tiles[x * height + y] = Tile{FLOOR};
-}
-
-Tile Room::getTile(int x, int y) const
-{
-	if (x >= 0 && x < this->width && y >= 0 && y < this->height)
-		return this->tiles[x * this->height + y];
-	else
-		return Tile{NONE};
-}
-
-void Room::setTile(int x, int y, Tile tile)
-{
-	if (x >= 0 && x < this->width && y >= 0 && y < this->height)
-		this->tiles[x * this->height + y] = tile;
-}
-
-bool Room::isAir(sf::Vector2f position) const
-{
-	return this->getTile(std::floor(position.x - this->x), std::floor(position.y - this->y)).isAir();
+	this->id = id;
 }
 
 int Room::getWidth() const
 {
-	return this->width;
+	return roomTemplates[id].tilemap.getWidth();
 }
 
 int Room::getHeight() const
 {
-	return this->height;
+	return roomTemplates[id].tilemap.getHeight();
 }
 
 int Room::getX() const
@@ -51,7 +27,19 @@ int Room::getY() const
 {
 	return this->y;
 }
-
+void Room::paste(TileMap &tilemap) const
+{
+	tilemap.paste(roomTemplates[id].tilemap, this->x, this->y);
+}
+Tile Room::getTile(int x, int y) const
+{
+	return roomTemplates[this->id].tilemap.getTile(x, y);
+}
+void Room::move(int x, int y)
+{
+	this->x += x;
+	this->y += y;
+}
 Room::~Room()
 {
 }

@@ -8,7 +8,7 @@
 #include "TextureMenager.h"
 #include "Player.h"
 #include "PlayerRenderer.h"
-
+#include "Floor.h"
 class Level : public GameState
 {
 public:
@@ -21,7 +21,7 @@ public:
 private:
 	int id;
 	sf::Time time;
-	std::vector<Room> rooms;
+	Floor *floor;
 	std::vector<RoomRenderer> roomRenderers;
 	Player player;
 	PlayerRenderer *playerRenderer;

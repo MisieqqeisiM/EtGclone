@@ -3,13 +3,13 @@
 Level::Level(int id, const TextureMenager *textureMenager) : textureMenager(textureMenager)
 {
 	this->id = id;
-	//temporary generation
-	this->rooms.push_back(Room(0, 0, 20, 20));
-	this->roomRenderers.push_back(RoomRenderer(this->rooms[0], *textureMenager));
-	this->playerRenderer = new PlayerRenderer(this->player);
+	this->floor = new Floor();
+	for(Room& room : this->floor->rooms)
+		this->roomRenderers.push_back(RoomRenderer(room, *textureMenager));
 }
 Level::~Level()
 {
+	delete this->floor;
 	delete this->textureMenager; //temporary
 }
 void Level::update(sf::RenderWindow *window, const sf::Time &time)
@@ -27,6 +27,6 @@ void Level::draw(sf::RenderTarget &renderTarget)
 	{
 		renderer.draw(renderTarget);
 	}
-	this->playerRenderer->draw(&renderTarget, *this->textureMenager, this->time);
+	//this->playerRenderer->draw(&renderTarget, *(this->textureMenager), this->time);
 }
 void Level::load() {}
