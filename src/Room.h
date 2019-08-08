@@ -3,27 +3,24 @@
 
 #include "Tile.h"
 #include "TileMap.h"
+#include "levelData.h"
 #include <vector>
 #include <SFML/System/Vector2.hpp>
 
 class Room
 {
 public:
-	Room(int x, int y, int id);
-	~Room();
-	int getWidth() const;
-	int getHeight() const;
-	int getX() const;
-	int getY() const;
-	Tile getTile(int x, int y) const;
+	virtual int getWidth() const = 0;
+	virtual int getHeight() const = 0;
+	virtual int getX() const = 0;
+	virtual int getY() const = 0;
+	virtual Tile getTile(int x, int y) const = 0;
+	virtual int getDoorCount() const = 0;
+	virtual Door getDoor(int id) const = 0;
 	void paste(TileMap &tilemap) const;
-	void move(int x, int y);
+	virtual void move(int x, int y) = 0;
 
 private:
-	int x, y;
-	int width,
-		height;
-	int id;
 	friend class RoomRenderer;
 };
 
